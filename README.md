@@ -1,3 +1,3 @@
 # Gadgets Inventor 1
--Ardublock Experiment Examples \r
--See wiki for more info
+####  Ardublock Experiment Examples 
+####  See wiki for more info
