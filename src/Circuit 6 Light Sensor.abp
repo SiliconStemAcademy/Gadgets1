@@ -3,37 +3,126 @@
 <Pages collapsible-pages="yes" drawer-with-page="yes">
 <Page page-color="160 160 160" page-drawer="Main" page-infullview="yes" page-name="Main" page-width="1366">
 <PageBlocks>
-<Block genus-name="number" id="93">
-<Label>0</Label>
+<Block genus-name="program" id="80">
 <Location>
-<X>525</X>
-<Y>141</Y>
+<X>295</X>
+<Y>177</Y>
+</Location>
+<Sockets num-sockets="2">
+<BlockConnector connector-kind="socket" connector-type="cmd" init-type="cmd" label="setup" position-type="single"/>
+<BlockConnector con-block-id="185" connector-kind="socket" connector-type="cmd" init-type="cmd" label="loop" position-type="single"/>
+</Sockets>
+</Block>
+<Block genus-name="setter_variable_number" id="185">
+<Location>
+<X>413</X>
+<Y>220</Y>
 </Location>
 <Comment>
-<Text>Try values 300-600 to tune</Text>
+<Text>Create a variable called lightLevel that stores the reading of the sensor on pin A0. This reading is a number between 0 and 1024.</Text>
 <Location>
-<X>702</X>
-<Y>143</Y>
+<X>643</X>
+<Y>51</Y>
 </Location>
 <BoxSize>
-<Width>156</Width>
-<Height>53</Height>
+<Width>323</Width>
+<Height>92</Height>
 </BoxSize>
 </Comment>
+<BeforeBlockId>80</BeforeBlockId>
+<AfterBlockId>179</AfterBlockId>
+<Sockets num-sockets="2">
+<BlockConnector con-block-id="186" connector-kind="socket" connector-type="number" init-type="number" label="variable" position-type="single"/>
+<BlockConnector con-block-id="188" connector-kind="socket" connector-type="number" init-type="number" label="value" position-type="single"/>
+</Sockets>
+</Block>
+<Block genus-name="setter_variable_number" id="179">
+<Location>
+<X>413</X>
+<Y>274</Y>
+</Location>
+<BeforeBlockId>185</BeforeBlockId>
+<AfterBlockId>182</AfterBlockId>
+<Sockets num-sockets="2">
+<BlockConnector con-block-id="180" connector-kind="socket" connector-type="number" init-type="number" label="variable" position-type="single"/>
+<BlockConnector con-block-id="92" connector-kind="socket" connector-type="number" init-type="number" label="value" position-type="single"/>
+</Sockets>
+</Block>
+<Block genus-name="setter_variable_number" id="182">
+<Location>
+<X>413</X>
+<Y>424</Y>
+</Location>
+<BeforeBlockId>179</BeforeBlockId>
+<AfterBlockId>81</AfterBlockId>
+<Sockets num-sockets="2">
+<BlockConnector con-block-id="192" connector-kind="socket" connector-type="number" init-type="number" label="variable" position-type="single"/>
+<BlockConnector con-block-id="97" connector-kind="socket" connector-type="number" init-type="number" label="value" position-type="single"/>
+</Sockets>
+</Block>
+<Block genus-name="pin-write-analog" id="81">
+<Location>
+<X>413</X>
+<Y>526</Y>
+</Location>
+<Comment>
+<Text>Take the tuned sensor reading and light the LED at that brightness.</Text>
+<Location>
+<X>627</X>
+<Y>667</Y>
+</Location>
+<BoxSize>
+<Width>193</Width>
+<Height>95</Height>
+</BoxSize>
+</Comment>
+<BeforeBlockId>182</BeforeBlockId>
+<Sockets num-sockets="2">
+<BlockConnector con-block-id="82" connector-kind="socket" connector-type="number" init-type="number" label="#" position-type="single"/>
+<BlockConnector con-block-id="178" connector-kind="socket" connector-type="number" init-type="number" label="" position-type="single"/>
+</Sockets>
+</Block>
+<Block genus-name="variable_number" id="178">
+<Label>lightLevel</Label>
+<Location>
+<X>577</X>
+<Y>553</Y>
+</Location>
 <Plug>
-<BlockConnector con-block-id="92" connector-kind="plug" connector-type="number" init-type="number" label="" position-type="mirror"/>
+<BlockConnector con-block-id="81" connector-kind="plug" connector-type="number" init-type="number" label="" position-type="mirror"/>
+</Plug>
+</Block>
+<Block genus-name="number" id="82">
+<Label>9</Label>
+<Location>
+<X>577</X>
+<Y>529</Y>
+</Location>
+<Plug>
+<BlockConnector con-block-id="81" connector-kind="plug" connector-type="number" init-type="number" label="" position-type="mirror"/>
 </Plug>
 </Block>
 <Block genus-name="constrain" id="97">
 <Location>
-<X>279</X>
-<Y>117</Y>
+<X>651</X>
+<Y>451</Y>
 </Location>
+<Comment>
+<Text>Take any values outside of 0-255 and make them 0 or 255.</Text>
+<Location>
+<X>921</X>
+<Y>556</Y>
+</Location>
+<BoxSize>
+<Width>150</Width>
+<Height>100</Height>
+</BoxSize>
+</Comment>
 <Plug>
-<BlockConnector con-block-id="81" connector-kind="plug" connector-type="number" init-type="number" label="" position-type="single"/>
+<BlockConnector con-block-id="182" connector-kind="plug" connector-type="number" init-type="number" label="" position-type="single"/>
 </Plug>
 <Sockets num-sockets="3">
-<BlockConnector con-block-id="92" connector-kind="socket" connector-type="number" init-type="number" label="value" position-type="single"/>
+<BlockConnector con-block-id="191" connector-kind="socket" connector-type="number" init-type="number" label="value" position-type="single"/>
 <BlockConnector con-block-id="98" connector-kind="socket" connector-type="number" init-type="number" label="lower" position-type="single"/>
 <BlockConnector con-block-id="99" connector-kind="socket" connector-type="number" init-type="number" label="higher" position-type="single"/>
 </Sockets>
@@ -41,8 +130,8 @@
 <Block genus-name="number" id="99">
 <Label>255</Label>
 <Location>
-<X>429</X>
-<Y>261</Y>
+<X>815</X>
+<Y>499</Y>
 </Location>
 <Plug>
 <BlockConnector con-block-id="97" connector-kind="plug" connector-type="number" init-type="number" label="" position-type="mirror"/>
@@ -51,23 +140,54 @@
 <Block genus-name="number" id="98">
 <Label>0</Label>
 <Location>
-<X>429</X>
-<Y>237</Y>
+<X>815</X>
+<Y>475</Y>
 </Location>
 <Plug>
 <BlockConnector con-block-id="97" connector-kind="plug" connector-type="number" init-type="number" label="" position-type="mirror"/>
 </Plug>
 </Block>
-<Block genus-name="map" id="92">
+<Block genus-name="variable_number" id="191">
+<Label>lightLevel</Label>
 <Location>
-<X>429</X>
-<Y>117</Y>
+<X>815</X>
+<Y>451</Y>
 </Location>
 <Plug>
-<BlockConnector con-block-id="97" connector-kind="plug" connector-type="number" init-type="number" label="" position-type="single"/>
+<BlockConnector con-block-id="97" connector-kind="plug" connector-type="number" init-type="number" label="" position-type="mirror"/>
+</Plug>
+</Block>
+<Block genus-name="variable_number" id="192">
+<Label>lightLevel</Label>
+<Location>
+<X>651</X>
+<Y>427</Y>
+</Location>
+<Plug>
+<BlockConnector con-block-id="182" connector-kind="plug" connector-type="number" init-type="number" label="" position-type="mirror"/>
+</Plug>
+</Block>
+<Block genus-name="map" id="92">
+<Location>
+<X>651</X>
+<Y>301</Y>
+</Location>
+<Comment>
+<Text>Take the number from 0-1024 and make it fit from 0 to 255.</Text>
+<Location>
+<X>964</X>
+<Y>208</Y>
+</Location>
+<BoxSize>
+<Width>150</Width>
+<Height>100</Height>
+</BoxSize>
+</Comment>
+<Plug>
+<BlockConnector con-block-id="179" connector-kind="plug" connector-type="number" init-type="number" label="" position-type="single"/>
 </Plug>
 <Sockets num-sockets="5">
-<BlockConnector con-block-id="84" connector-kind="socket" connector-type="number" init-type="number" label="value" position-type="single"/>
+<BlockConnector con-block-id="190" connector-kind="socket" connector-type="number" init-type="number" label="value" position-type="single"/>
 <BlockConnector con-block-id="93" connector-kind="socket" connector-type="number" init-type="number" label="from" position-type="single"/>
 <BlockConnector con-block-id="94" connector-kind="socket" connector-type="number" init-type="number" label="" position-type="single"/>
 <BlockConnector con-block-id="95" connector-kind="socket" connector-type="number" init-type="number" label="to" position-type="single"/>
@@ -77,8 +197,8 @@
 <Block genus-name="number" id="96">
 <Label>255</Label>
 <Location>
-<X>525</X>
-<Y>213</Y>
+<X>761</X>
+<Y>397</Y>
 </Location>
 <Plug>
 <BlockConnector con-block-id="92" connector-kind="plug" connector-type="number" init-type="number" label="" position-type="mirror"/>
@@ -87,8 +207,8 @@
 <Block genus-name="number" id="95">
 <Label>0</Label>
 <Location>
-<X>525</X>
-<Y>189</Y>
+<X>761</X>
+<Y>373</Y>
 </Location>
 <Plug>
 <BlockConnector con-block-id="92" connector-kind="plug" connector-type="number" init-type="number" label="" position-type="mirror"/>
@@ -97,14 +217,14 @@
 <Block genus-name="number" id="94">
 <Label>1024</Label>
 <Location>
-<X>525</X>
-<Y>165</Y>
+<X>761</X>
+<Y>349</Y>
 </Location>
 <Comment>
 <Text>Set to 800-900 to tune.</Text>
 <Location>
-<X>686</X>
-<Y>213</Y>
+<X>982</X>
+<Y>374</Y>
 </Location>
 <BoxSize>
 <Width>170</Width>
@@ -115,57 +235,77 @@
 <BlockConnector con-block-id="92" connector-kind="plug" connector-type="number" init-type="number" label="" position-type="mirror"/>
 </Plug>
 </Block>
-<Block genus-name="pin-read-analog" id="84">
-<Location>
-<X>525</X>
-<Y>117</Y>
-</Location>
-<Plug>
-<BlockConnector con-block-id="92" connector-kind="plug" connector-type="number" init-type="number" label="" position-type="single"/>
-</Plug>
-<Sockets num-sockets="1">
-<BlockConnector con-block-id="85" connector-kind="socket" connector-type="number" init-type="number" label="#" position-type="single"/>
-</Sockets>
-</Block>
-<Block genus-name="number" id="85">
+<Block genus-name="number" id="93">
 <Label>0</Label>
 <Location>
-<X>649</X>
-<Y>117</Y>
+<X>761</X>
+<Y>325</Y>
 </Location>
+<Comment>
+<Text>Try values 300-600 to tune</Text>
+<Location>
+<X>958</X>
+<Y>313</Y>
+</Location>
+<BoxSize>
+<Width>156</Width>
+<Height>53</Height>
+</BoxSize>
+</Comment>
 <Plug>
-<BlockConnector con-block-id="84" connector-kind="plug" connector-type="number" init-type="number" label="" position-type="mirror"/>
+<BlockConnector con-block-id="92" connector-kind="plug" connector-type="number" init-type="number" label="" position-type="mirror"/>
 </Plug>
 </Block>
-<Block genus-name="program" id="80">
+<Block genus-name="variable_number" id="190">
+<Label>lightLevel</Label>
 <Location>
-<X>11</X>
-<Y>47</Y>
-</Location>
-<Sockets num-sockets="2">
-<BlockConnector connector-kind="socket" connector-type="cmd" init-type="cmd" label="setup" position-type="single"/>
-<BlockConnector con-block-id="81" connector-kind="socket" connector-type="cmd" init-type="cmd" label="loop" position-type="single"/>
-</Sockets>
-</Block>
-<Block genus-name="pin-write-analog" id="81">
-<Location>
-<X>129</X>
-<Y>90</Y>
-</Location>
-<BeforeBlockId>80</BeforeBlockId>
-<Sockets num-sockets="2">
-<BlockConnector con-block-id="82" connector-kind="socket" connector-type="number" init-type="number" label="#" position-type="single"/>
-<BlockConnector con-block-id="97" connector-kind="socket" connector-type="number" init-type="number" label="" position-type="single"/>
-</Sockets>
-</Block>
-<Block genus-name="number" id="82">
-<Label>9</Label>
-<Location>
-<X>279</X>
-<Y>93</Y>
+<X>761</X>
+<Y>301</Y>
 </Location>
 <Plug>
-<BlockConnector con-block-id="81" connector-kind="plug" connector-type="number" init-type="number" label="" position-type="mirror"/>
+<BlockConnector con-block-id="92" connector-kind="plug" connector-type="number" init-type="number" label="" position-type="mirror"/>
+</Plug>
+</Block>
+<Block genus-name="variable_number" id="180">
+<Label>lightLevel</Label>
+<Location>
+<X>651</X>
+<Y>277</Y>
+</Location>
+<Plug>
+<BlockConnector con-block-id="179" connector-kind="plug" connector-type="number" init-type="number" label="" position-type="mirror"/>
+</Plug>
+</Block>
+<Block genus-name="pin-read-analog" id="188">
+<Location>
+<X>665</X>
+<Y>247</Y>
+</Location>
+<Plug>
+<BlockConnector con-block-id="185" connector-kind="plug" connector-type="number" init-type="number" label="" position-type="single"/>
+</Plug>
+<Sockets num-sockets="1">
+<BlockConnector con-block-id="189" connector-kind="socket" connector-type="number" init-type="number" label="#" position-type="single"/>
+</Sockets>
+</Block>
+<Block genus-name="number" id="189">
+<Label>0</Label>
+<Location>
+<X>789</X>
+<Y>247</Y>
+</Location>
+<Plug>
+<BlockConnector con-block-id="188" connector-kind="plug" connector-type="number" init-type="number" label="" position-type="mirror"/>
+</Plug>
+</Block>
+<Block genus-name="variable_number" id="186">
+<Label>lightLevel</Label>
+<Location>
+<X>665</X>
+<Y>223</Y>
+</Location>
+<Plug>
+<BlockConnector con-block-id="185" connector-kind="plug" connector-type="number" init-type="number" label="" position-type="mirror"/>
 </Plug>
 </Block>
 </PageBlocks>
