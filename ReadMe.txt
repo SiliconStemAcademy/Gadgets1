@@ -1,1 +1,0 @@
-Place tools folder in Arduino folder. If Arduino folder already had a folder named tools then copy contents into that folder.
