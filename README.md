@@ -9,5 +9,5 @@ Copy ardublock-SSA-Vx.jar into
 Create these folders if they are not already there.  
   
 Copy the example files into  
-    .../arduino/ardublock  
+    .../Arduino1.6.x/ardublock  
     
